@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أولاد موريس للأنظمة الكهربائية وكاميرات المراقبة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: right;
+            direction: rtl;
+        }
+        header {
+            background: #0f172a;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+        header p {
+            font-size: 1rem;
+            color: #cbd5e1;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .service-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-right: 5px solid #0284c7;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .service-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: #1e293b;
+        }
+        .service-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* الزر البرتقالي التفاعلي */
+        .btn-orange-247 {
+            background: #d97706;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .btn-orange-247:active {
+            transform: scale(0.98);
+            background: #b45309;
+        }
+
+        /* نافذة خيارات التواصل والنموذج المنبثق (Modal) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 480px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* تنسيق نموذج طلب الخدمة */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            background: #f8f9fa;
+        }
+        .form-control:focus {
+            border-color: #0284c7;
+            background: #fff;
+        }
+        
+        .btn-submit-wa {
+            display: block;
+            width: 100%;
+            background: #25d366;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
+            margin-top: 15px;
+        }
+        .btn-submit-wa:hover {
+            background: #20ba5a;
+        }
+
+        .contact-option {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        .opt-call { background: #0284c7; }
+        .opt-whatsapp { background: #25d366; }
+        .opt-maps { background: #475569; }
+
+        .btn-close {
+            margin-top: 15px;
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .cta-section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .cta-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>أولاد موريس للأنظمة الكهربائية وكاميرات المراقبة</h1>
+        <p>جودة في التنفيذ.. أمان دائم.. التزام تام بالمواعيد</p>
+    </header>
+
+    <div class="container">
+
+        <!-- الزر البرتقالي التفاعلي -->
+        <div class="btn-orange-247" onclick="openContactModal()">
+            🔔 خدمة الدعم الفني والصيانة متاحة 24 ساعة (اضغط هنا للتواصل)
+        </div>
+
+        <!-- الخدمات الثلاثة -->
+        <div class="services-grid">
+            <div class="service-card" onclick="openServiceForm('كاميرات المراقبة والشبكات والتيار الخفيف')">
+                <div class="service-title">
+                    <span style="font-size:1.3rem;">📷</span>
+                    <h3>كاميرات المراقبة والأمان</h3>
+                </div>
+                <p>توريد وتركيب وصيانة أحدث أنظمة الكاميرات (Hikvision, HiLook, Uniview) لرؤية واضحة ومتابعة فورية لممتلكاتك.</p>
+            </div>
+
+            <div class="service-card" onclick="openServiceForm('أعمال الكهرباء (سلاسيون وتشطيب)')">
+                <div class="service-title">
+                    <span style="font-size:1.3rem;">⚡</span>
+                    <h3>أعمال الكهرباء (سلاسيون)</h3>
+                </div>
+                <p>تأسيس وتشطيب متكامل لشققك ومحلاتك التجارية بأعلى معايير الأمان وتحمل الأحمال المختلفة.</p>
+            </div>
+
+            <div class="service-card" onclick="openServiceForm('مد الكابلات وشبكات الأمان')">
+                <div class="service-title">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 15h7c1.5 0 3-1.5 3-3s-1.5-3-3-3H2" stroke-width="3"/>
+                        <path d="M12 12h4"/>
+                        <path d="M16 10v4l3-2-3-2z" fill="#0284c7"/>
+                        <path d="M19 9l3-2M19 15l3 2"/>
+                    </svg>
+                    <h3>مد الكابلات وشبكات الأمان</h3>
+                </div>
+                <p>مد وتوصيل الكابلات والخراطيم بتنسيق هندسي دقيق يضمن سهولة الصيانة ويحمي التوصيلات.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>محتاج تواصل مع فني أو تستفسر عن خدمة؟</h2>
+            <p style="margin-bottom: 15px; color: #64748b;">كلمني مباشرة وسوا نتفق على الميعاد المناسب لمعاينة الشغل.</p>
+            <a href="https://wa.me/201122054890" class="btn-whatsapp" target="_blank">
+                تواصل عبر الواتساب الآن
+            </a>
+        </div>
+
+    </div>
+
+    <!-- نافذة خيارات الاتصال التقليدية -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <h3>اختر طريقة التواصل المناسبة:</h3>
+            <button onclick="copyAndCall('01122054890')" class="contact-option opt-call">📞 الاتصال المباشر (نسخ الرقم)</button>
+            <a href="https://wa.me/201122054890" target="_blank" class="contact-option opt-whatsapp">💬 مراسلة عبر الواتساب مباشرة</a>
+            <a href="https://maps.app.goo.gl/UybyCG7rtDTwnHZ56?g_st=ac" target="_blank" class="contact-option opt-maps">📍 موقع المحل على الخرائط</a>
+            <button class="btn-close" onclick="closeContactModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- نافذة نموذج طلب الخدمة -->
+    <div class="modal-overlay" id="serviceFormModal">
+        <div class="modal-content">
+            <h3 id="formTitle">طلب خدمة جديدة</h3>
+            
+            <div class="form-group">
+                <label>نوع الخدمة:</label>
+                <select id="serviceType" class="form-control">
+                    <option value="كاميرات المراقبة والشبكات والتيار الخفيف">كاميرات المراقبة والشبكات والتيار الخفيف</option>
+                    <option value="أعمال الكهرباء (سلاسيون وتشطيب)">أعمال الكهرباء (سلاسيون وتشطيب)</option>
+                    <option value="مد الكابلات وشبكات الأمان">مد الكابلات وشبكات الأمان</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>اسم العميل:</label>
+                <input type="text" id="clientName" class="form-control" placeholder="اكتب اسمك بالكامل">
+            </div>
+
+            <div class="form-group">
+                <label>لوكيشن موقع العمل:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="clientLocation" class="form-control" placeholder="الصق رابط اللوكيشن هنا أو اضغط الخرائط">
+                    <!-- زر يفتح خرائط جوجل مباشرة لنسخ اللوكيشن بسهولة -->
+                    <button type="button" onclick="openGoogleMaps()" style="background: #0284c7; color: white; border: none; padding: 0 12px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; white-space: nowrap;">🗺️ فتح الخرائط</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>شرح العطل أو تفاصيل الخدمة المطلوبة:</label>
+                <textarea id="clientNotes" class="form-control" rows="3" placeholder="اكتب تفاصيل المشكلة أو الشغل المطلوب..."></textarea>
+            </div>
+
+            <button type="button" class="btn-submit-wa" onclick="sendWhatsAppOrder()">
+                💬 إرسال الطلب عبر الواتساب الآن
+            </button>
+
+            <button class="btn-close" onclick="closeServiceForm()">إغلاق</button>
+        </div>
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة لصالح أولاد موريس &copy; 2026 | الجبل الأصفر - الخانكة - القليوبية
+    </footer>
+
+    <!-- أكواد الجافاسكريبت -->
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+        function copyAndCall(phone) {
+            navigator.clipboard.writeText(phone).then(function() {
+                alert("تم نسخ رقم التليفون (01122054890) بنجاح! يمكنك لصقه في لوحة الاتصال الآن.");
+            }, function() {
+                prompt("رقم التليفون للتواصل:", phone);
+            });
+        }
+
+        function openServiceForm(selectedService) {
+            document.getElementById('serviceType').value = selectedService;
+            document.getElementById('serviceFormModal').style.display = 'flex';
+        }
+        function closeServiceForm() {
+            document.getElementById('serviceFormModal').style.display = 'none';
+        }
+
+        // دالة فتح تطبيق الخرائط لتسهيل نسخ اللوكيشن ولصقه
+        function openGoogleMaps() {
+            alert("سيتم فتح خرائط جوجل الآن. قم بمشاركة موقعك أو نسخ رابطه، ثم الصقه في خانة اللوكيشن.");
+            window.open("https://maps.google.com", "_blank");
+        }
+
+        function sendWhatsAppOrder() {
+            let service = document.getElementById('serviceType').value;
+            let name = document.getElementById('clientName').value.trim();
+            let location = document.getElementById('clientLocation').value.trim();
+            let notes = document.getElementById('clientNotes').value.trim();
+
+            if (!name) {
+                alert("من فضلك اكتب (اسم العميل) لكي يتم إرسال الطلب.");
+                return;
+            }
+
+            let message = `مرحباً، أود طلب خدمة من موقع أولاد موريس:%0a` +
+                          `----------------------------------%0a` +
+                          `🛠️ *نوع الخدمة:* ${service}%0a` +
+                          `👤 *اسم العميل:* ${name}%0a` +
+                          `📍 *اللوكيشن / العنوان:* ${location ? location : 'لم يتم إرفاق رابط اللوكيشن'}%0a` +
+                          `📝 *تفاصيل العطل / الطلب:* ${notes ? notes : 'لا توجد تفاصيل إضافية'}`;
+
+            let ownerPhone = "201122054890";
+            let waURL = `https://wa.me/${ownerPhone}?text=${message}`;
+            window.open(waURL, '_blank');
+        }
+    </script>
+
+</body>
+</html>
